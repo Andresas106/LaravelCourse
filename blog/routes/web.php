@@ -1,44 +1,39 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
 
-    return "Hola mundo";
-});
+Route::get('/', HomeController::class);
 
 
-//ruta para mostrar listado de registros
-Route::get('/posts', function () {
-    return "Listado de posts";
-});
+/*Route::prefix('posts')->name('`posts.')->controller(PostController::class)->group(function () {
+    //ruta para mostrar listado de registros
+    Route::get('/', 'index')->name('index');
 
-//ruta para mostrar un formulario de creacion de registros
-Route::get('/posts/create', function () {
-    return "Formulario de creacion de posts";
-});
+    //ruta para mostrar un formulario de creacion de registros
+    Route::get('/create', 'create')->name('create');
 
-//ruta para guardar el registro en la base de datos
-Route::post('/posts', function () {
-    return "Guardar el post en la base de datos";
-});
+    //ruta para guardar el registro en la base de datos
+    Route::post('/', 'store')->name('store');
 
-//ruta para mostrar el detalle de un registro
-Route::get('/posts/{id}', function ($id) {
-    return "Mostrando el detalle del post con id: " . $id;
-});
+    //ruta para mostrar el detalle de un registro
+    Route::get('/{id}', 'show')->name('show');
 
-//ruta para mostrar un formulario de edicion de registros
-Route::get('/posts/{id}/edit', function ($id) {
-    return "Formulario de edicion del post con id: " . $id;
-});
+    //ruta para mostrar un formulario de edicion de registros
+    Route::get('/{id}/edit', 'edit')->name('edit');
 
-//ruta para actualizar el registro en la base de datos
-Route::put('/posts/{id}', function ($id) {
-    return "Actualizar el post con id: " . $id;
-});
+    //ruta para actualizar el registro en la base de datos
+    Route::put('/{id}', 'update')->name('update');
 
-//ruta para eliminar un registro de la base de datos
-Route::delete('/posts/{id}', function ($id) {
-    return "Eliminar el post con id: " . $id;
-});
+    //ruta para eliminar un registro de la base de datos
+    Route::delete('/{id}', 'destroy')->name('destroy');
+
+});*/
+
+
+
+Route::resource('articulos', PostController::class)
+->parameters(['articulos' => 'id'])
+->names('posts');
