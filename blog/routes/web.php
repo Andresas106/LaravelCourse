@@ -34,6 +34,6 @@ Route::get('/', HomeController::class);
 
 
 
-Route::resource('articulos', PostController::class)
-->parameters(['articulos' => 'id'])
+Route::resource('posts', PostController::class)
+->parameters(['posts' => 'id'])
 ->names('posts');
