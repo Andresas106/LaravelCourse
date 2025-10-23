@@ -8,7 +8,25 @@ class PostController extends Controller
 {
     public function index()
     {
-        return view('posts.index');
+
+        $posts = [
+            [
+                'title' => 'Primer post',
+                'content' => 'Contenido del primer post'
+            ],
+            [
+                'title' => 'Segundo post',
+                'content' => 'Contenido del segundo post'
+            ],
+            [
+                'title' => 'Tercer post',
+                'content' => 'Contenido del tercer post'
+            ]
+        ];
+
+        $cant = 10;
+
+        return view('posts.index', compact('posts', 'cant'));
     }
 
     public function create()
