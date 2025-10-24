@@ -23,10 +23,7 @@ class PostController extends Controller
                 'content' => 'Contenido del tercer post'
             ]
         ];
-
-        $cant = 10;
-
-        return view('posts.index', compact('posts', 'cant'));
+        return view('posts.index', compact('posts'));
     }
 
     public function create()
