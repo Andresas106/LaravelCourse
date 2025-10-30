@@ -13,10 +13,24 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+
+            //$table->bigInteger('id')->autoIncrement()->unsigned();
+            //$table->bigIncrements('id');
             $table->string('title', 120);
             $table->string('slug')->unique();
             $table->longText('content');
             $table->timestamps();
+
+            //$table->unsignedBigInteger('user_id');
+            //$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
+            //forma rapida foreign key
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+
+            //$table->primary(['id', 'slug']); llave primaria compuesta
+
+            //$table->index('title'); // índice simple
+            //$table->fullText('content'); // índice de texto completo
         });
     }
 
