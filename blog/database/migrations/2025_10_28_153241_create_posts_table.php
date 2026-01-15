@@ -29,6 +29,7 @@ return new class extends Migration
 
             //$table->primary(['id', 'slug']); llave primaria compuesta
 
+            $table->foreignId('category_id')->constrained()->onDelete('cascade');
             //$table->index('title'); // índice simple
             //$table->fullText('content'); // índice de texto completo
         });
