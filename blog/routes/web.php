@@ -40,5 +40,11 @@ Route::resource('posts', PostController::class)
 ->names('posts');
 
 Route::get('/prueba', function () {
-    return 'Hola desde la ruta de prueba';
+    DB::table('users')
+    ->orderBy('id')
+    ->chunk(100, function ($users) {
+        foreach ($users as $user) {
+            echo "Usuario: " . $user->name . "<br>";
+        }
+    });
 });
